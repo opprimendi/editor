@@ -1,7 +1,9 @@
 # Build and Release Folders
-bin/
+#bin/
 bin-debug/
 bin-release/
+
+bin/*.swf
 
 # Other files and folders
 .settings/
