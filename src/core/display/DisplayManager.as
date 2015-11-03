@@ -1,17 +1,17 @@
 package core.display 
 {
-	import core.display.scenes.AbstractScene;
-	import core.display.ui.UIComponent;
+	import core.display.scenes.BaseScene;
 	import core.WorldTimeController;
+	import flash.display.Sprite;
 	import flash.display.Stage;
 	import flash.events.Event;
 
 	public class DisplayManager 
 	{
 		private var stage:Stage;
-		private var currentScene:AbstractScene;
+		private var currentScene:BaseScene;
 		
-		public var container:UIComponent = new UIComponent();
+		public var container:Sprite = new Sprite();
 		
 		public var worldTimeController:WorldTimeController;// = new WorldTimeController();
 		
@@ -39,7 +39,7 @@ package core.display
 				currentScene.update(worldTimeController.worldStep);
 		}
 		
-		public function showScene(scene:AbstractScene):void
+		public function showScene(scene:BaseScene):void
 		{
 			if (currentScene == scene)
 				return;
@@ -53,7 +53,7 @@ package core.display
 				
 			currentScene.activate();
 			
-			container.addComponent(currentScene.sceneView);
+			container.addChild(currentScene.sceneView);
 		}
 		
 		public function hideCurrentScene():void
@@ -62,7 +62,7 @@ package core.display
 				return;
 				
 			currentScene.deactivete();
-			container.removeComponent(currentScene.sceneView);
+			container.removeChild(currentScene.sceneView);
 		}
 	}
 }

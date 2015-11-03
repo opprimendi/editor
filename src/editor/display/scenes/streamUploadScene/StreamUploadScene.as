@@ -1,4 +1,4 @@
-package core.display.scenes.streamUploadScene 
+package editor.display.scenes.streamUploadScene 
 {
 	import away3d.entities.Mesh;
 	import away3d.materials.methods.EnvMapMethod;
@@ -9,15 +9,15 @@ package core.display.scenes.streamUploadScene
 	import away3d.textures.Anisotropy;
 	import away3d.textures.BitmapCubeTexture;
 	import away3d.textures.BitmapTexture;
-	import core.commands.AddObjectCommand;
-	import core.display.scenes.mainScene.MainScene;
+	import core.commands.AddObject3DCommand;
+	import editor.display.scenes.editorScene.EditorScene;
 	import flash.display.BitmapData;
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFormat;
 	import flash.ui.Keyboard;
 	
-	public class StreamUploadScene extends MainScene 
+	public class StreamUploadScene extends EditorScene 
 	{
 		[Embed(source = "../../../../../bin/sample.jpg")]
 		private var sampleTextureSoruce:Class;
@@ -90,7 +90,7 @@ package core.display.scenes.streamUploadScene
 		
 		private function createAddObjectAction():void 
 		{
-			var addObjectCommand:AddObjectCommand = new AddObjectCommand(sceneContext);
+			var addObjectCommand:AddObject3DCommand = new AddObject3DCommand(sceneContext);
 			
 			var texture:BitmapTexture = new BitmapTexture(bitmapData);
 			texture.isUseStreamingUpload = true;

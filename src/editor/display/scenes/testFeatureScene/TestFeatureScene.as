@@ -1,4 +1,4 @@
-package core.display.scenes.testFeatureScene 
+package editor.display.scenes.testFeatureScene 
 {
 	import away3d.animators.data.JointPose;
 	import away3d.animators.ParticleAnimator;
@@ -29,8 +29,8 @@ package core.display.scenes.testFeatureScene
 	import away3d.textures.Anisotropy;
 	import away3d.textures.BitmapCubeTexture;
 	import away3d.textures.BitmapTexture;
-	import core.commands.AddObjectCommand;
-	import core.display.scenes.mainScene.MainScene;
+	import core.commands.AddObject3DCommand;
+	import editor.display.scenes.editorScene.EditorScene;
 	import core.WorldStep;
 	import flash.display.Loader;
 	import flash.geom.Vector3D;
@@ -40,7 +40,7 @@ package core.display.scenes.testFeatureScene
 	import flash.text.TextFormat;
 	import flash.ui.Keyboard;
 	
-	public class TestFeatureScene extends MainScene 
+	public class TestFeatureScene extends EditorScene 
 	{
 		[Embed(source = "../../../../../bin/sample.jpg")]
 		private var sampleTextureSoruce:Class;
@@ -117,7 +117,9 @@ package core.display.scenes.testFeatureScene
 						
 						var trident:Trident = new Trident();
 						trident.scale(0.001);
-						//marker.addChild(trident);
+						
+						if(i == 7)
+							marker.addChild(trident);
 					}
 					
 					markers[i].transform = pose.toMatrix3D(markers[i].transform);
@@ -221,7 +223,9 @@ package core.display.scenes.testFeatureScene
 		private function onEffectLoaded(e:LoaderEvent):void 
 		{
 			markers[7].addChild(effectLoader);
-			effectLoader.rotationY = 180;
+			
+			effectLoader.addChild(new Trident());
+			//effectLoader.rotationY = 180;
 			effectLoader.scaleX = effectLoader.scaleY = effectLoader.scaleZ = 1 / 180;
 			//sceneContext.layerView.addChild3D(effectLoader);
 			(effectLoader.getChildAt(0) as ParticleGroup).animator.start();
@@ -310,7 +314,7 @@ package core.display.scenes.testFeatureScene
 		
 		private function createAddObjectAction():void 
 		{
-			var addObjectCommand:AddObjectCommand = new AddObjectCommand(sceneContext);
+			var addObjectCommand:AddObject3DCommand = new AddObject3DCommand(sceneContext);
 			
 			
 			

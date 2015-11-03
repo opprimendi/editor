@@ -3,14 +3,16 @@ package core.display.scenes
 	import core.IUpdatable;
 	import core.WorldStep;
 
-	public class AbstractScene implements IUpdatable
+	public class BaseScene implements IUpdatable
 	{
 		public var initialized:Boolean;
 		public var sceneId:int;
-		public var sceneView:AbstractSceneView;
+		public var sceneView:BaseSceneView;
 		
-		public function AbstractScene(sceneId:int) 
+		public function BaseScene(sceneId:int) 
 		{
+			super();
+			
 			this.sceneId = sceneId;
 		}
 		

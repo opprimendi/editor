@@ -13,14 +13,14 @@ package core.display.scenes
 			
 		}
 		
-		public function addScene(scene:AbstractScene):void
+		public function addScene(scene:BaseScene):void
 		{
 			scenesMap[scene.sceneId] = scene;
 		}
 		
 		public function setScene(sceneId:int):void
 		{
-			var sceneEntity:AbstractScene = scenesMap[sceneId];
+			var sceneEntity:BaseScene = scenesMap[sceneId];
 			displayManager.showScene(sceneEntity);
 		}
 		

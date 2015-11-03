@@ -16,6 +16,7 @@ package core.commands
 		
 		public function pushCommand(command:Command):void
 		{
+			//TODO: optimisation with splice and push
 			if (currentCommandIndex != commandsStack.length -1)
 			{
 				commandsStack.splice(currentCommandIndex, commandsStack.length - currentCommandIndex);
@@ -54,7 +55,5 @@ package core.commands
 			currentCommandIndex++;		
 			commandsStack[currentCommandIndex].execute();
 		}
-		
 	}
-
 }
